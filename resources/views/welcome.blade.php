@@ -1,132 +1,413 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-gray-100{--tw-bg-opacity: 1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.border-gray-200{--tw-border-opacity: 1;border-color:rgb(229 231 235 / var(--tw-border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.text-center{text-align:center}.text-gray-200{--tw-text-opacity: 1;color:rgb(229 231 235 / var(--tw-text-opacity))}.text-gray-300{--tw-text-opacity: 1;color:rgb(209 213 219 / var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity: 1;color:rgb(156 163 175 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity: 1;color:rgb(107 114 128 / var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-700{--tw-text-opacity: 1;color:rgb(55 65 81 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity: 1;color:rgb(17 24 39 / var(--tw-text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--tw-bg-opacity: 1;background-color:rgb(31 41 55 / var(--tw-bg-opacity))}.dark\:bg-gray-900{--tw-bg-opacity: 1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:border-gray-700{--tw-border-opacity: 1;border-color:rgb(55 65 81 / var(--tw-border-opacity))}.dark\:text-white{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:text-gray-400{--tw-text-opacity: 1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-gray-500{--tw-text-opacity: 1;color:rgb(107 114 128 / var(--tw-text-opacity))}}
-        </style>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    {{-- Font awesome Icons --}}
+    <script src="https://use.fontawesome.com/1f8892ca9e.js"></script>
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
+</head>
+<style>
+    .fill {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-shrink: 0;
+        max-width: 80%;
+        max-height: 80%
+    }
+</style>
+
+<body class="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class=" row">
+                <div class="col-sm-10"></div>
+                <ul class="navbar-nav col-sm-2">
+                    <!-- Authentication Links -->
+                    @guest
+                    @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @endif
+
+                    <!-- @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif -->
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="{{ url('/home') }}" class="nav-link">Dashboard</a>
+                    </li>
+                    @endguest
+                </ul>
             </div>
         </div>
-    </body>
+    </nav>
+
+    <div class="fill">
+        <!-- <img class="img-fluid" style="max-width: 100%; height: auto;" src="{{ asset('images/Post office.gif') }}" alt="Internal Logistics"> -->
+        <style>
+            svg#freepik_stories-delivery:not(.animated) .animable {
+                opacity: 0;
+            }
+
+            svg#freepik_stories-delivery.animated #freepik--background-simple--inject-1--inject-2 {
+                animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) fadeIn;
+                animation-delay: 0s;
+            }
+
+            svg#freepik_stories-delivery.animated #freepik--Plants--inject-1--inject-2 {
+                animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) zoomIn;
+                animation-delay: 0s;
+            }
+
+            svg#freepik_stories-delivery.animated #freepik--Clouds--inject-1--inject-2 {
+                animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) lightSpeedLeft;
+                animation-delay: 0s;
+            }
+
+            svg#freepik_stories-delivery.animated #freepik--Shadow--inject-1--inject-2 {
+                animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) zoomOut;
+                animation-delay: 0s;
+            }
+
+            svg#freepik_stories-delivery.animated #freepik--Character--inject-1--inject-2 {
+                animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) lightSpeedRight;
+                animation-delay: 0s;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes zoomIn {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.5);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes lightSpeedLeft {
+                from {
+                    transform: translate3d(-50%, 0, 0) skewX(20deg);
+                    opacity: 0;
+                }
+
+                60% {
+                    transform: skewX(-10deg);
+                    opacity: 1;
+                }
+
+                80% {
+                    transform: skewX(2deg);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+
+            @keyframes zoomOut {
+                0% {
+                    opacity: 0;
+                    transform: scale(1.5);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes lightSpeedRight {
+                from {
+                    transform: translate3d(50%, 0, 0) skewX(-20deg);
+                    opacity: 0;
+                }
+
+                60% {
+                    transform: skewX(10deg);
+                    opacity: 1;
+                }
+
+                80% {
+                    transform: skewX(-2deg);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+        </style>
+        <svg class="animated" id="freepik_stories-delivery" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" version="1.1" xmlns:svgjs="http://svgjs.com/svgjs">
+            <g id="freepik--background-simple--inject-1--inject-2" style="transform-origin: 254.55px 326.59px 0px;" class="animable">
+                <path d="M44.9,375.51H464.2s-10.12-20.23-23.27-26.81-20.23,6.58-36.42-2.53-12.64-30.34-30.85-43-37.43,1.52-54.12.51-21.75-23.27-40-25.8-17.71,18.53-34.4,24.79-28.2-3.93-39.95-3.54-9.61,7.58-20.74,12.64-13.15,2.53-34.39,4.55-26.3,23.77-33.89,29.84-17.7-3.54-33.38,0S44.9,375.51,44.9,375.51Z" style="fill: #346EF1; transform-origin: 254.55px 326.59px 0px;" id="eljynn2ex0zcb" class="animable"></path>
+                <g id="el68dgrbuvpz">
+                    <g style="opacity: 0.8; transform-origin: 254.55px 326.59px 0px;" class="animable" id="elnblnx3lf7ms">
+                        <path d="M44.9,375.51H464.2s-10.12-20.23-23.27-26.81-20.23,6.58-36.42-2.53-12.64-30.34-30.85-43-37.43,1.52-54.12.51-21.75-23.27-40-25.8-17.71,18.53-34.4,24.79-28.2-3.93-39.95-3.54-9.61,7.58-20.74,12.64-13.15,2.53-34.39,4.55-26.3,23.77-33.89,29.84-17.7-3.54-33.38,0S44.9,375.51,44.9,375.51Z" style="fill: rgb(255, 255, 255); transform-origin: 254.55px 326.59px 0px;" id="elk354zc8qb7" class="animable"></path>
+                    </g>
+                </g>
+            </g>
+            <g id="freepik--Plants--inject-1--inject-2" style="transform-origin: 249.993px 324.299px 0px;" class="animable">
+                <path d="M396.21,298.57c.79,4.19,10.28,17.84,13.78,25.52-.81-1-1.75-2.18-2.68-3.27-.73-1.27-1.38-2.69-2.11-3.78-1.13-1.69-2.32-3.34-3.61-4.91a40.75,40.75,0,0,0-6.74-6.71,19.14,19.14,0,0,0-10.12-4.21c-1-.07-6.71-.5-5.38,1.8a2.66,2.66,0,0,0,.95.84c3.51,2.15,7.39,3.3,11.09,5,5.54,2.59,12.86,9.49,15.91,12.49l1.55,2.05c-5.45-5.08-14.35-8-17.4-6.57-3.77,1.72,4.34,3.48,11.22,5.26a19.48,19.48,0,0,1,8.34,4.19c1.32,1.78,2.81,3.78,4.3,5.83.18.32.36.62.54.92a21,21,0,0,0-3.56-3.28c-3.52-2.41-13.21-3.87-14.23-.61s5.85,1.77,11.76,2.71a15.86,15.86,0,0,1,8.42,4.47l.39.42c.67,1,1.31,1.87,1.91,2.75,1.41,2.06,2.75,4,4,5.87a33.65,33.65,0,0,0-7-6.83c-5.16-3.54-12.05-4.29-14.56-2.39s9.07,3.62,14.76,5.62a20.57,20.57,0,0,1,8.44,6c1.87,2.65,3.72,5.23,5.71,7.93a78.07,78.07,0,0,0-10.15-7.61c-5.83-3.82-11.87-3.3-13.48-1s3.32,2.45,12.49,4.42a28.27,28.27,0,0,1,13,6.6l2.63,3.5c1,1.37,2.25,2.77,3.52,4.15-1.55-.7-3.84-1.7-6.38-2.79a59.53,59.53,0,0,1-8.21-4.14c-3-1.88-7.08-3.87-10.67-2.27a2,2,0,0,0-1.18,2.78,3.81,3.81,0,0,0,1.77,1.64c4,2.19,8.93,2.77,13.3,3.74a93.41,93.41,0,0,0,12.17,1.89c1.19,1.25,2.43,2.48,3.66,3.64l-1.84.34c-2.17.41-12.75-2.52-18-3.17s-9.5,2.8-3.8,4.8,19.89-.86,19.89-.86l4.1-.77c4.87,4.59,9.38,8.1,9.38,8.1l1.9-1.28s-3.93-1.08-10.53-7.32a17.18,17.18,0,0,1-.06-3.72c.42-7,6.19-14.9,1.76-21.67-1.07-1.64-3.38-2.54-4.66-.74-.92,1.3-.87,3.49-.58,5,1,4.95,2.55,9.34,2.17,14.5,0,.23,0,3.69.24,5.57-.9-.89-1.83-1.86-2.81-2.93a39.09,39.09,0,0,1-1.94-6c-1.27-5.45,0-11.23-.91-16.78-.29-1.7-2.94-5.73-4.24-2.23-.57,1.55.16,4.49.26,6.14.3,4.67.76,9.55,2.6,13.91l-.79-1a86.33,86.33,0,0,1-3.68-13.37c-1.41-7.51-1.17-13.9-3.59-15.9s-2.29,6.36,0,15.15a37.49,37.49,0,0,0,5.05,11.26c-2.58-3.3-5.15-6.69-7.6-10a27.94,27.94,0,0,1-4.15-11.92c-.43-6.67-.83-12.12-3.91-15.43s-3.22-.83-.79,6.7c1.67,5.16,3.67,12.1,6,16.77-1.91-2.59-3.7-5.05-5.31-7.28-1.07-2.31-3.67-8.28-4.48-13.44-1-6.56-2.28-10-4-8.26-1.19,1.22,1,9.18,4.19,15.66-1.35-1.91-2.36-3.38-3-4.25q-.4-.6-.9-1.26a129.61,129.61,0,0,0-5.65-15.54C400.81,300.17,395.36,294,396.21,298.57Z" style="fill: #346EF1; transform-origin: 417.57px 337.846px 0px;" id="elbvobn9z06fr" class="animable"></path>
+                <g id="elxbphzmjk6j">
+                    <g style="opacity: 0.6; transform-origin: 417.57px 337.846px 0px;" class="animable" id="el0lpo5txnfwkm">
+                        <path d="M396.21,298.57c.79,4.19,10.28,17.84,13.78,25.52-.81-1-1.75-2.18-2.68-3.27-.73-1.27-1.38-2.69-2.11-3.78-1.13-1.69-2.32-3.34-3.61-4.91a40.75,40.75,0,0,0-6.74-6.71,19.14,19.14,0,0,0-10.12-4.21c-1-.07-6.71-.5-5.38,1.8a2.66,2.66,0,0,0,.95.84c3.51,2.15,7.39,3.3,11.09,5,5.54,2.59,12.86,9.49,15.91,12.49l1.55,2.05c-5.45-5.08-14.35-8-17.4-6.57-3.77,1.72,4.34,3.48,11.22,5.26a19.48,19.48,0,0,1,8.34,4.19c1.32,1.78,2.81,3.78,4.3,5.83.18.32.36.62.54.92a21,21,0,0,0-3.56-3.28c-3.52-2.41-13.21-3.87-14.23-.61s5.85,1.77,11.76,2.71a15.86,15.86,0,0,1,8.42,4.47l.39.42c.67,1,1.31,1.87,1.91,2.75,1.41,2.06,2.75,4,4,5.87a33.65,33.65,0,0,0-7-6.83c-5.16-3.54-12.05-4.29-14.56-2.39s9.07,3.62,14.76,5.62a20.57,20.57,0,0,1,8.44,6c1.87,2.65,3.72,5.23,5.71,7.93a78.07,78.07,0,0,0-10.15-7.61c-5.83-3.82-11.87-3.3-13.48-1s3.32,2.45,12.49,4.42a28.27,28.27,0,0,1,13,6.6l2.63,3.5c1,1.37,2.25,2.77,3.52,4.15-1.55-.7-3.84-1.7-6.38-2.79a59.53,59.53,0,0,1-8.21-4.14c-3-1.88-7.08-3.87-10.67-2.27a2,2,0,0,0-1.18,2.78,3.81,3.81,0,0,0,1.77,1.64c4,2.19,8.93,2.77,13.3,3.74a93.41,93.41,0,0,0,12.17,1.89c1.19,1.25,2.43,2.48,3.66,3.64l-1.84.34c-2.17.41-12.75-2.52-18-3.17s-9.5,2.8-3.8,4.8,19.89-.86,19.89-.86l4.1-.77c4.87,4.59,9.38,8.1,9.38,8.1l1.9-1.28s-3.93-1.08-10.53-7.32a17.18,17.18,0,0,1-.06-3.72c.42-7,6.19-14.9,1.76-21.67-1.07-1.64-3.38-2.54-4.66-.74-.92,1.3-.87,3.49-.58,5,1,4.95,2.55,9.34,2.17,14.5,0,.23,0,3.69.24,5.57-.9-.89-1.83-1.86-2.81-2.93a39.09,39.09,0,0,1-1.94-6c-1.27-5.45,0-11.23-.91-16.78-.29-1.7-2.94-5.73-4.24-2.23-.57,1.55.16,4.49.26,6.14.3,4.67.76,9.55,2.6,13.91l-.79-1a86.33,86.33,0,0,1-3.68-13.37c-1.41-7.51-1.17-13.9-3.59-15.9s-2.29,6.36,0,15.15a37.49,37.49,0,0,0,5.05,11.26c-2.58-3.3-5.15-6.69-7.6-10a27.94,27.94,0,0,1-4.15-11.92c-.43-6.67-.83-12.12-3.91-15.43s-3.22-.83-.79,6.7c1.67,5.16,3.67,12.1,6,16.77-1.91-2.59-3.7-5.05-5.31-7.28-1.07-2.31-3.67-8.28-4.48-13.44-1-6.56-2.28-10-4-8.26-1.19,1.22,1,9.18,4.19,15.66-1.35-1.91-2.36-3.38-3-4.25q-.4-.6-.9-1.26a129.61,129.61,0,0,0-5.65-15.54C400.81,300.17,395.36,294,396.21,298.57Z" style="fill: rgb(255, 255, 255); transform-origin: 417.57px 337.846px 0px;" id="el3bz09haxsz8" class="animable"></path>
+                    </g>
+                </g>
+                <path d="M467.09,279.08c-2.32,3.57-4.86,20-7.62,28,.14-1.32.24-2.78.31-4.21.35-1.42.86-2.89,1.09-4.2.34-2,.61-4,.77-6a40.35,40.35,0,0,0-.26-9.51,19.19,19.19,0,0,0-4.43-10c-.63-.71-4.51-5-5.13-2.41a2.58,2.58,0,0,0,.11,1.26c1.05,4,3.07,7.49,4.56,11.3,2.22,5.7,2.76,15.74,2.9,20-.08.69-.18,1.56-.29,2.55-.44-7.43-4.9-15.67-8.07-16.76-3.92-1.34.74,5.52,4.5,11.55a19.55,19.55,0,0,1,3.15,8.78c-.27,2.21-.58,4.68-.91,7.19-.09.36-.17.7-.24,1.05a21.31,21.31,0,0,0-.32-4.84c-.89-4.17-6.9-11.91-9.89-10.25s3,5.32,6.65,10.07a15.8,15.8,0,0,1,3,9.05c0,.19,0,.38,0,.57-.17,1.15-.34,2.26-.51,3.31-.4,2.46-.76,4.78-1.11,7a34,34,0,0,0-.34-9.76c-1.31-6.12-5.78-11.42-8.91-11.77s4.07,8.87,6.82,14.25a20.43,20.43,0,0,1,2,10.14c-.47,3.2-.91,6.35-1.33,9.68a79.48,79.48,0,0,0-2.1-12.52c-1.59-6.78-6.33-10.58-9.11-10s.72,4.06,6,11.81a28.27,28.27,0,0,1,4.84,13.72c-.17,1.4-.34,2.84-.51,4.34-.19,1.71-.29,3.56-.31,5.44-.65-1.58-1.61-3.89-2.7-6.42a59.94,59.94,0,0,1-3.09-8.66c-.9-3.45-2.46-7.69-6.16-9a2,2,0,0,0-2.77,1.2,3.84,3.84,0,0,0,.14,2.41c1.36,4.32,4.56,8.16,7.05,11.88a94.83,94.83,0,0,0,7.52,9.76c0,1.73.05,3.47.14,5.16l-1.57-1c-1.86-1.2-7.49-10.62-10.84-14.7s-8.81-4.53-6.07.85,15,13.09,15,13.09l3.5,2.28c.37,6.68,1.21,12.33,1.21,12.33l2.26.38s-2.1-3.49-2.58-12.55a16.82,16.82,0,0,1,2.53-2.74c5.12-4.78,14.75-6.52,16.21-14.49.35-1.92-.69-4.16-2.87-3.74-1.56.3-3,1.93-3.84,3.2-2.71,4.25-4.6,8.52-8.42,12-.17.16-2.54,2.68-3.67,4.2,0-1.26-.05-2.61,0-4.06a39.82,39.82,0,0,1,2.74-5.7c2.84-4.82,7.75-8.12,10.91-12.78,1-1.43,1.82-6.17-1.53-4.53-1.49.73-3,3.36-4,4.62-3,3.59-6,7.45-7.72,11.87,0-.42.08-.84.11-1.26a87,87,0,0,1,6.56-12.22c4.16-6.41,8.73-10.88,8.36-14s-6,3-10.47,11a37.53,37.53,0,0,0-4.1,11.64c.41-4.18.88-8.4,1.36-12.46a27.71,27.71,0,0,1,5.22-11.49c4.28-5.13,7.75-9.35,7.8-13.87s-1.76-2.83-5.19,4.3c-2.35,4.89-5.68,11.3-7.24,16.27.41-3.19.81-6.21,1.19-8.93.81-2.41,3-8.53,6-12.82,3.78-5.46,5.24-8.83,2.79-8.74-1.7.06-5.64,7.3-7.76,14.22.34-2.31.62-4.07.8-5.11q.12-.7.21-1.53A131.23,131.23,0,0,0,466,292.53C469.32,283.4,469.61,275.2,467.09,279.08Z" style="fill: #346EF1; transform-origin: 452.776px 323.699px 0px;" id="elen5qfskvzgu" class="animable"></path>
+                <g id="elu7s4s9v2yq9">
+                    <g style="opacity: 0.6; transform-origin: 452.776px 323.699px 0px;" class="animable" id="elmd8e4a1g4q">
+                        <path d="M467.09,279.08c-2.32,3.57-4.86,20-7.62,28,.14-1.32.24-2.78.31-4.21.35-1.42.86-2.89,1.09-4.2.34-2,.61-4,.77-6a40.35,40.35,0,0,0-.26-9.51,19.19,19.19,0,0,0-4.43-10c-.63-.71-4.51-5-5.13-2.41a2.58,2.58,0,0,0,.11,1.26c1.05,4,3.07,7.49,4.56,11.3,2.22,5.7,2.76,15.74,2.9,20-.08.69-.18,1.56-.29,2.55-.44-7.43-4.9-15.67-8.07-16.76-3.92-1.34.74,5.52,4.5,11.55a19.55,19.55,0,0,1,3.15,8.78c-.27,2.21-.58,4.68-.91,7.19-.09.36-.17.7-.24,1.05a21.31,21.31,0,0,0-.32-4.84c-.89-4.17-6.9-11.91-9.89-10.25s3,5.32,6.65,10.07a15.8,15.8,0,0,1,3,9.05c0,.19,0,.38,0,.57-.17,1.15-.34,2.26-.51,3.31-.4,2.46-.76,4.78-1.11,7a34,34,0,0,0-.34-9.76c-1.31-6.12-5.78-11.42-8.91-11.77s4.07,8.87,6.82,14.25a20.43,20.43,0,0,1,2,10.14c-.47,3.2-.91,6.35-1.33,9.68a79.48,79.48,0,0,0-2.1-12.52c-1.59-6.78-6.33-10.58-9.11-10s.72,4.06,6,11.81a28.27,28.27,0,0,1,4.84,13.72c-.17,1.4-.34,2.84-.51,4.34-.19,1.71-.29,3.56-.31,5.44-.65-1.58-1.61-3.89-2.7-6.42a59.94,59.94,0,0,1-3.09-8.66c-.9-3.45-2.46-7.69-6.16-9a2,2,0,0,0-2.77,1.2,3.84,3.84,0,0,0,.14,2.41c1.36,4.32,4.56,8.16,7.05,11.88a94.83,94.83,0,0,0,7.52,9.76c0,1.73.05,3.47.14,5.16l-1.57-1c-1.86-1.2-7.49-10.62-10.84-14.7s-8.81-4.53-6.07.85,15,13.09,15,13.09l3.5,2.28c.37,6.68,1.21,12.33,1.21,12.33l2.26.38s-2.1-3.49-2.58-12.55a16.82,16.82,0,0,1,2.53-2.74c5.12-4.78,14.75-6.52,16.21-14.49.35-1.92-.69-4.16-2.87-3.74-1.56.3-3,1.93-3.84,3.2-2.71,4.25-4.6,8.52-8.42,12-.17.16-2.54,2.68-3.67,4.2,0-1.26-.05-2.61,0-4.06a39.82,39.82,0,0,1,2.74-5.7c2.84-4.82,7.75-8.12,10.91-12.78,1-1.43,1.82-6.17-1.53-4.53-1.49.73-3,3.36-4,4.62-3,3.59-6,7.45-7.72,11.87,0-.42.08-.84.11-1.26a87,87,0,0,1,6.56-12.22c4.16-6.41,8.73-10.88,8.36-14s-6,3-10.47,11a37.53,37.53,0,0,0-4.1,11.64c.41-4.18.88-8.4,1.36-12.46a27.71,27.71,0,0,1,5.22-11.49c4.28-5.13,7.75-9.35,7.8-13.87s-1.76-2.83-5.19,4.3c-2.35,4.89-5.68,11.3-7.24,16.27.41-3.19.81-6.21,1.19-8.93.81-2.41,3-8.53,6-12.82,3.78-5.46,5.24-8.83,2.79-8.74-1.7.06-5.64,7.3-7.76,14.22.34-2.31.62-4.07.8-5.11q.12-.7.21-1.53A131.23,131.23,0,0,0,466,292.53C469.32,283.4,469.61,275.2,467.09,279.08Z" style="fill: rgb(255, 255, 255); transform-origin: 452.776px 323.699px 0px;" id="el22mrdc2pqqz" class="animable"></path>
+                    </g>
+                </g>
+                <path d="M40.58,315c.47,3.14,7.16,13.61,9.54,19.43-.57-.81-1.23-1.67-1.9-2.51-.51-1-.95-2.05-1.47-2.89-.79-1.29-1.63-2.55-2.54-3.76a30.28,30.28,0,0,0-4.85-5.2,14.27,14.27,0,0,0-7.42-3.43c-.71-.08-5-.57-4.07,1.18a1.8,1.8,0,0,0,.69.65c2.56,1.71,5.41,2.68,8.13,4.09C40.75,324.6,46,330,48.2,332.29l1.09,1.57c-3.91-3.95-10.47-6.36-12.79-5.41-2.86,1.18,3.14,2.73,8.22,4.26a14.39,14.39,0,0,1,6.1,3.36c.94,1.36,2,2.91,3,4.48.12.24.25.47.38.7a15.42,15.42,0,0,0-2.56-2.55c-2.56-1.9-9.75-3.27-10.61-.87s4.32,1.49,8.7,2.36a11.88,11.88,0,0,1,6.16,3.58c.09.12.18.22.28.33.47.72.92,1.43,1.34,2.1,1,1.58,1.93,3.06,2.86,4.49a25.87,25.87,0,0,0-5-5.29c-3.75-2.79-8.88-3.55-10.8-2.2s6.66,3,10.85,4.62a15.35,15.35,0,0,1,6.13,4.69c1.31,2,2.62,4,4,6.08a58.3,58.3,0,0,0-7.36-6c-4.24-3-8.76-2.81-10-1.11s2.41,1.93,9.19,3.66a21.1,21.1,0,0,1,9.49,5.3c.59.87,1.21,1.76,1.86,2.69a40.41,40.41,0,0,0,2.5,3.19c-1.14-.56-2.81-1.38-4.68-2.26a45,45,0,0,1-6-3.33c-2.21-1.49-5.17-3.09-7.9-2a1.47,1.47,0,0,0-1,2A2.91,2.91,0,0,0,53,362.08c2.9,1.75,6.58,2.32,9.82,3.17a69.88,69.88,0,0,0,9,1.76c.86,1,1.75,1.92,2.63,2.82l-1.38.21c-1.64.24-9.44-2.25-13.33-2.9s-7.17,1.82-3,3.48,14.86-.07,14.86-.07l3.09-.45c3.5,3.56,6.76,6.31,6.76,6.31l1.45-.9s-2.89-.92-7.64-5.76a12.82,12.82,0,0,1,.07-2.78c.51-5.21,5-10.94,1.93-16.12-.75-1.25-2.44-2-3.46-.68a5.29,5.29,0,0,0-.57,3.69c.58,3.72,1.63,7,1.21,10.87,0,.18-.1,2.76,0,4.16-.64-.68-1.31-1.43-2-2.26a30.16,30.16,0,0,1-1.28-4.55c-.78-4.1.34-8.38-.19-12.54-.17-1.28-2-4.36-3.1-1.79-.47,1.14,0,3.36,0,4.59a31.86,31.86,0,0,0,1.54,10.45c-.19-.25-.38-.5-.56-.76A64.67,64.67,0,0,1,66.53,352c-.83-5.64-.47-10.4-2.22-12s-1.89,4.69-.46,11.3a28.28,28.28,0,0,0,3.45,8.56c-1.83-2.55-3.65-5.14-5.38-7.66a20.71,20.71,0,0,1-2.75-9c-.13-5-.28-9.06-2.48-11.62s-2.38-.72-.78,5c1.1,3.9,2.39,9.13,4,12.69-1.34-2-2.61-3.88-3.74-5.59a42,42,0,0,1-3-10.16c-.57-4.92-1.41-7.53-2.75-6.27-.92.87.45,6.87,2.68,11.8-1-1.47-1.67-2.59-2.08-3.26q-.28-.45-.63-1A99.08,99.08,0,0,0,46.63,323C44,316.27,40.08,311.53,40.58,315Z" style="fill: #346EF1; transform-origin: 55.3193px 345.121px 0px;" id="elg32my23kt1b" class="animable"></path>
+                <g id="el4ohcam6ma9s">
+                    <path d="M40.58,315c.47,3.14,7.16,13.61,9.54,19.43-.57-.81-1.23-1.67-1.9-2.51-.51-1-.95-2.05-1.47-2.89-.79-1.29-1.63-2.55-2.54-3.76a30.28,30.28,0,0,0-4.85-5.2,14.27,14.27,0,0,0-7.42-3.43c-.71-.08-5-.57-4.07,1.18a1.8,1.8,0,0,0,.69.65c2.56,1.71,5.41,2.68,8.13,4.09C40.75,324.6,46,330,48.2,332.29l1.09,1.57c-3.91-3.95-10.47-6.36-12.79-5.41-2.86,1.18,3.14,2.73,8.22,4.26a14.39,14.39,0,0,1,6.1,3.36c.94,1.36,2,2.91,3,4.48.12.24.25.47.38.7a15.42,15.42,0,0,0-2.56-2.55c-2.56-1.9-9.75-3.27-10.61-.87s4.32,1.49,8.7,2.36a11.88,11.88,0,0,1,6.16,3.58c.09.12.18.22.28.33.47.72.92,1.43,1.34,2.1,1,1.58,1.93,3.06,2.86,4.49a25.87,25.87,0,0,0-5-5.29c-3.75-2.79-8.88-3.55-10.8-2.2s6.66,3,10.85,4.62a15.35,15.35,0,0,1,6.13,4.69c1.31,2,2.62,4,4,6.08a58.3,58.3,0,0,0-7.36-6c-4.24-3-8.76-2.81-10-1.11s2.41,1.93,9.19,3.66a21.1,21.1,0,0,1,9.49,5.3c.59.87,1.21,1.76,1.86,2.69a40.41,40.41,0,0,0,2.5,3.19c-1.14-.56-2.81-1.38-4.68-2.26a45,45,0,0,1-6-3.33c-2.21-1.49-5.17-3.09-7.9-2a1.47,1.47,0,0,0-1,2A2.91,2.91,0,0,0,53,362.08c2.9,1.75,6.58,2.32,9.82,3.17a69.88,69.88,0,0,0,9,1.76c.86,1,1.75,1.92,2.63,2.82l-1.38.21c-1.64.24-9.44-2.25-13.33-2.9s-7.17,1.82-3,3.48,14.86-.07,14.86-.07l3.09-.45c3.5,3.56,6.76,6.31,6.76,6.31l1.45-.9s-2.89-.92-7.64-5.76a12.82,12.82,0,0,1,.07-2.78c.51-5.21,5-10.94,1.93-16.12-.75-1.25-2.44-2-3.46-.68a5.29,5.29,0,0,0-.57,3.69c.58,3.72,1.63,7,1.21,10.87,0,.18-.1,2.76,0,4.16-.64-.68-1.31-1.43-2-2.26a30.16,30.16,0,0,1-1.28-4.55c-.78-4.1.34-8.38-.19-12.54-.17-1.28-2-4.36-3.1-1.79-.47,1.14,0,3.36,0,4.59a31.86,31.86,0,0,0,1.54,10.45c-.19-.25-.38-.5-.56-.76A64.67,64.67,0,0,1,66.53,352c-.83-5.64-.47-10.4-2.22-12s-1.89,4.69-.46,11.3a28.28,28.28,0,0,0,3.45,8.56c-1.83-2.55-3.65-5.14-5.38-7.66a20.71,20.71,0,0,1-2.75-9c-.13-5-.28-9.06-2.48-11.62s-2.38-.72-.78,5c1.1,3.9,2.39,9.13,4,12.69-1.34-2-2.61-3.88-3.74-5.59a42,42,0,0,1-3-10.16c-.57-4.92-1.41-7.53-2.75-6.27-.92.87.45,6.87,2.68,11.8-1-1.47-1.67-2.59-2.08-3.26q-.28-.45-.63-1A99.08,99.08,0,0,0,46.63,323C44,316.27,40.08,311.53,40.58,315Z" style="fill: rgb(255, 255, 255); opacity: 0.6; transform-origin: 55.3193px 345.121px 0px;" class="animable" id="elqchw34ijzzc"></path>
+                </g>
+                <path d="M113,312.52c-2.67,1.72-9.44,12.13-13.76,16.71.5-.86,1-1.82,1.5-2.77.67-.87,1.47-1.71,2-2.53.85-1.26,1.65-2.55,2.38-3.88a30.33,30.33,0,0,0,2.73-6.55,14.16,14.16,0,0,0,.06-8.18c-.21-.68-1.54-4.79-2.75-3.21a1.83,1.83,0,0,0-.31.89c-.51,3-.21,6-.37,9.09-.23,4.56-2.94,11.56-4.16,14.52-.26.44-.59,1-1,1.64,2-5.19,1.47-12.16-.35-13.88-2.26-2.12-1.19,4-.48,9.24a14.6,14.6,0,0,1-.55,6.95c-.86,1.41-1.83,3-2.82,4.61l-.49.64A15.4,15.4,0,0,0,96,332.42c.67-3.11-1-10.22-3.59-10s.43,4.54,1.44,8.89a11.76,11.76,0,0,1-.72,7.09l-.18.39c-.47.73-.92,1.43-1.36,2.09-1,1.56-2,3-2.92,4.45a25.38,25.38,0,0,0,2.76-6.74c1-4.57-.43-9.55-2.45-10.75s0,7.29.27,11.79a15.31,15.31,0,0,1-1.75,7.52c-1.3,2-2.56,4-3.87,6.18A58.79,58.79,0,0,0,86,344.15c1-5.1-1.06-9.14-3.14-9.59s-.76,3,.46,9.88a21.09,21.09,0,0,1-.91,10.83c-.55.9-1.1,1.83-1.68,2.8s-1.28,2.33-1.88,3.61c0-1.28.1-3.14.13-5.2a46.08,46.08,0,0,1,.55-6.85c.45-2.62.69-6-1.43-8a1.46,1.46,0,0,0-2.25,0,2.81,2.81,0,0,0-.64,1.68c-.4,3.37.6,7,1.15,10.26a71.4,71.4,0,0,0,2.13,9c-.53,1.17-1,2.38-1.49,3.55l-.76-1.17c-.89-1.39-1.84-9.53-2.86-13.34s-4.62-5.78-4.4-1.28,6.2,13.52,6.2,13.52l1.69,2.62c-1.8,4.65-3,8.76-3,8.76l1.41.95s-.35-3,2.1-9.33A12.23,12.23,0,0,1,80,365.66c5-1.68,12,.08,15.48-4.89.83-1.2.81-3-.8-3.43a5.25,5.25,0,0,0-3.6,1c-3.15,2.06-5.74,4.39-9.41,5.58-.17.06-2.55,1.05-3.79,1.73.36-.86.77-1.79,1.24-2.76a28.21,28.21,0,0,1,3.61-3c3.41-2.41,7.77-3.15,11.35-5.36,1.09-.67,3.13-3.64.35-3.55-1.24,0-3.07,1.37-4.17,1.91a31.87,31.87,0,0,0-8.89,5.71c.15-.27.3-.55.46-.82A64.82,64.82,0,0,1,90,351.42c4.8-3.08,9.28-4.72,10-7s-5,.21-10.48,4.25a28,28,0,0,0-6.37,6.67c1.56-2.72,3.18-5.45,4.75-8.06A20.72,20.72,0,0,1,95,341.09c4.5-2.18,8.15-4,9.57-7s-.33-2.46-4.85,1.34c-3.1,2.61-7.33,5.94-9.92,8.85,1.26-2,2.46-4,3.55-5.71a41.83,41.83,0,0,1,8-6.89c4.25-2.55,6.28-4.4,4.58-5.09-1.18-.48-6.08,3.24-9.65,7.3l2.11-3.23c.2-.3.41-.63.62-1a98.51,98.51,0,0,0,9.15-8.29C113.21,316.14,115.92,310.65,113,312.52Z" style="fill: #346EF1; transform-origin: 91.5856px 338.966px 0px;" id="el7g4on1bqorj" class="animable"></path>
+                <g id="el41s1p2i5gc3">
+                    <path d="M113,312.52c-2.67,1.72-9.44,12.13-13.76,16.71.5-.86,1-1.82,1.5-2.77.67-.87,1.47-1.71,2-2.53.85-1.26,1.65-2.55,2.38-3.88a30.33,30.33,0,0,0,2.73-6.55,14.16,14.16,0,0,0,.06-8.18c-.21-.68-1.54-4.79-2.75-3.21a1.83,1.83,0,0,0-.31.89c-.51,3-.21,6-.37,9.09-.23,4.56-2.94,11.56-4.16,14.52-.26.44-.59,1-1,1.64,2-5.19,1.47-12.16-.35-13.88-2.26-2.12-1.19,4-.48,9.24a14.6,14.6,0,0,1-.55,6.95c-.86,1.41-1.83,3-2.82,4.61l-.49.64A15.4,15.4,0,0,0,96,332.42c.67-3.11-1-10.22-3.59-10s.43,4.54,1.44,8.89a11.76,11.76,0,0,1-.72,7.09l-.18.39c-.47.73-.92,1.43-1.36,2.09-1,1.56-2,3-2.92,4.45a25.38,25.38,0,0,0,2.76-6.74c1-4.57-.43-9.55-2.45-10.75s0,7.29.27,11.79a15.31,15.31,0,0,1-1.75,7.52c-1.3,2-2.56,4-3.87,6.18A58.79,58.79,0,0,0,86,344.15c1-5.1-1.06-9.14-3.14-9.59s-.76,3,.46,9.88a21.09,21.09,0,0,1-.91,10.83c-.55.9-1.1,1.83-1.68,2.8s-1.28,2.33-1.88,3.61c0-1.28.1-3.14.13-5.2a46.08,46.08,0,0,1,.55-6.85c.45-2.62.69-6-1.43-8a1.46,1.46,0,0,0-2.25,0,2.81,2.81,0,0,0-.64,1.68c-.4,3.37.6,7,1.15,10.26a71.4,71.4,0,0,0,2.13,9c-.53,1.17-1,2.38-1.49,3.55l-.76-1.17c-.89-1.39-1.84-9.53-2.86-13.34s-4.62-5.78-4.4-1.28,6.2,13.52,6.2,13.52l1.69,2.62c-1.8,4.65-3,8.76-3,8.76l1.41.95s-.35-3,2.1-9.33A12.23,12.23,0,0,1,80,365.66c5-1.68,12,.08,15.48-4.89.83-1.2.81-3-.8-3.43a5.25,5.25,0,0,0-3.6,1c-3.15,2.06-5.74,4.39-9.41,5.58-.17.06-2.55,1.05-3.79,1.73.36-.86.77-1.79,1.24-2.76a28.21,28.21,0,0,1,3.61-3c3.41-2.41,7.77-3.15,11.35-5.36,1.09-.67,3.13-3.64.35-3.55-1.24,0-3.07,1.37-4.17,1.91a31.87,31.87,0,0,0-8.89,5.71c.15-.27.3-.55.46-.82A64.82,64.82,0,0,1,90,351.42c4.8-3.08,9.28-4.72,10-7s-5,.21-10.48,4.25a28,28,0,0,0-6.37,6.67c1.56-2.72,3.18-5.45,4.75-8.06A20.72,20.72,0,0,1,95,341.09c4.5-2.18,8.15-4,9.57-7s-.33-2.46-4.85,1.34c-3.1,2.61-7.33,5.94-9.92,8.85,1.26-2,2.46-4,3.55-5.71a41.83,41.83,0,0,1,8-6.89c4.25-2.55,6.28-4.4,4.58-5.09-1.18-.48-6.08,3.24-9.65,7.3l2.11-3.23c.2-.3.41-.63.62-1a98.51,98.51,0,0,0,9.15-8.29C113.21,316.14,115.92,310.65,113,312.52Z" style="fill: rgb(255, 255, 255); opacity: 0.6; transform-origin: 91.5856px 338.966px 0px;" class="animable" id="eljno0ys3knd"></path>
+                </g>
+                <path d="M142.32,312.79c-2.68,1.73-9.45,12.14-13.77,16.71.5-.85,1-1.81,1.5-2.77.67-.86,1.47-1.71,2-2.52.85-1.26,1.65-2.55,2.38-3.88a30.54,30.54,0,0,0,2.73-6.55,14.24,14.24,0,0,0,.07-8.18c-.22-.68-1.55-4.79-2.76-3.22a1.9,1.9,0,0,0-.31.9c-.5,3-.21,6-.37,9.08-.23,4.57-2.94,11.57-4.16,14.53-.26.44-.59,1-1,1.64,2-5.2,1.48-12.17-.35-13.88-2.26-2.12-1.19,4-.48,9.24a14.41,14.41,0,0,1-.55,6.94c-.86,1.42-1.83,3-2.82,4.62-.17.21-.33.43-.49.64a15.4,15.4,0,0,0,1.27-3.39c.68-3.11-1-10.22-3.59-10s.43,4.54,1.44,8.89a11.71,11.71,0,0,1-.72,7.08l-.18.4c-.47.72-.92,1.43-1.36,2.09-1,1.55-2,3-2.92,4.45a25.31,25.31,0,0,0,2.76-6.75c1-4.56-.43-9.54-2.45-10.74s.05,7.29.27,11.79a15.31,15.31,0,0,1-1.75,7.52c-1.3,2-2.56,4-3.87,6.18a59.09,59.09,0,0,0,2.41-9.17c1-5.1-1.06-9.14-3.14-9.59s-.76,3,.47,9.88a21.2,21.2,0,0,1-.92,10.83c-.55.9-1.1,1.83-1.68,2.8s-1.28,2.33-1.88,3.6c0-1.27.1-3.13.13-5.2a46.05,46.05,0,0,1,.55-6.84c.45-2.62.69-6-1.43-8a1.46,1.46,0,0,0-2.25,0,2.81,2.81,0,0,0-.64,1.68c-.4,3.36.6,7,1.15,10.26a70.67,70.67,0,0,0,2.13,8.94c-.53,1.18-1,2.38-1.49,3.56l-.76-1.18c-.89-1.39-1.84-9.52-2.86-13.33s-4.62-5.78-4.4-1.28,6.2,13.51,6.2,13.51l1.69,2.62c-1.8,4.66-3,8.77-3,8.77l1.41.95s-.35-3,2.1-9.33a12.6,12.6,0,0,1,2.56-1.1c5-1.68,12,.09,15.48-4.88.83-1.21.81-3.05-.8-3.43a5.2,5.2,0,0,0-3.6,1c-3.15,2.06-5.74,4.39-9.41,5.58-.17.05-2.55,1.05-3.79,1.73.36-.87.77-1.79,1.24-2.77a29,29,0,0,1,3.61-3c3.42-2.41,7.77-3.15,11.35-5.36,1.1-.67,3.13-3.64.35-3.56-1.24,0-3.07,1.38-4.17,1.91a32.13,32.13,0,0,0-8.89,5.72l.46-.83a65.14,65.14,0,0,1,8.21-6.31c4.8-3.09,9.28-4.72,10-7s-5,.21-10.48,4.25a28,28,0,0,0-6.37,6.67c1.56-2.72,3.18-5.45,4.75-8.07a20.82,20.82,0,0,1,7.07-6.22c4.5-2.18,8.15-4,9.57-7.05s-.33-2.47-4.85,1.34c-3.1,2.6-7.33,5.94-9.92,8.85,1.26-2.05,2.46-4,3.55-5.72a42.2,42.2,0,0,1,8-6.88c4.25-2.56,6.28-4.4,4.58-5.09-1.18-.48-6.08,3.24-9.65,7.3,1-1.47,1.68-2.58,2.11-3.23.2-.3.41-.63.62-1a99.06,99.06,0,0,0,9.16-8.28C142.51,316.42,145.22,310.93,142.32,312.79Z" style="fill: #346EF1; transform-origin: 120.863px 339.223px 0px;" id="elfnvn0s6jybw" class="animable"></path>
+                <g id="elerxyxon3j16">
+                    <path d="M142.32,312.79c-2.68,1.73-9.45,12.14-13.77,16.71.5-.85,1-1.81,1.5-2.77.67-.86,1.47-1.71,2-2.52.85-1.26,1.65-2.55,2.38-3.88a30.54,30.54,0,0,0,2.73-6.55,14.24,14.24,0,0,0,.07-8.18c-.22-.68-1.55-4.79-2.76-3.22a1.9,1.9,0,0,0-.31.9c-.5,3-.21,6-.37,9.08-.23,4.57-2.94,11.57-4.16,14.53-.26.44-.59,1-1,1.64,2-5.2,1.48-12.17-.35-13.88-2.26-2.12-1.19,4-.48,9.24a14.41,14.41,0,0,1-.55,6.94c-.86,1.42-1.83,3-2.82,4.62-.17.21-.33.43-.49.64a15.4,15.4,0,0,0,1.27-3.39c.68-3.11-1-10.22-3.59-10s.43,4.54,1.44,8.89a11.71,11.71,0,0,1-.72,7.08l-.18.4c-.47.72-.92,1.43-1.36,2.09-1,1.55-2,3-2.92,4.45a25.31,25.31,0,0,0,2.76-6.75c1-4.56-.43-9.54-2.45-10.74s.05,7.29.27,11.79a15.31,15.31,0,0,1-1.75,7.52c-1.3,2-2.56,4-3.87,6.18a59.09,59.09,0,0,0,2.41-9.17c1-5.1-1.06-9.14-3.14-9.59s-.76,3,.47,9.88a21.2,21.2,0,0,1-.92,10.83c-.55.9-1.1,1.83-1.68,2.8s-1.28,2.33-1.88,3.6c0-1.27.1-3.13.13-5.2a46.05,46.05,0,0,1,.55-6.84c.45-2.62.69-6-1.43-8a1.46,1.46,0,0,0-2.25,0,2.81,2.81,0,0,0-.64,1.68c-.4,3.36.6,7,1.15,10.26a70.67,70.67,0,0,0,2.13,8.94c-.53,1.18-1,2.38-1.49,3.56l-.76-1.18c-.89-1.39-1.84-9.52-2.86-13.33s-4.62-5.78-4.4-1.28,6.2,13.51,6.2,13.51l1.69,2.62c-1.8,4.66-3,8.77-3,8.77l1.41.95s-.35-3,2.1-9.33a12.6,12.6,0,0,1,2.56-1.1c5-1.68,12,.09,15.48-4.88.83-1.21.81-3.05-.8-3.43a5.2,5.2,0,0,0-3.6,1c-3.15,2.06-5.74,4.39-9.41,5.58-.17.05-2.55,1.05-3.79,1.73.36-.87.77-1.79,1.24-2.77a29,29,0,0,1,3.61-3c3.42-2.41,7.77-3.15,11.35-5.36,1.1-.67,3.13-3.64.35-3.56-1.24,0-3.07,1.38-4.17,1.91a32.13,32.13,0,0,0-8.89,5.72l.46-.83a65.14,65.14,0,0,1,8.21-6.31c4.8-3.09,9.28-4.72,10-7s-5,.21-10.48,4.25a28,28,0,0,0-6.37,6.67c1.56-2.72,3.18-5.45,4.75-8.07a20.82,20.82,0,0,1,7.07-6.22c4.5-2.18,8.15-4,9.57-7.05s-.33-2.47-4.85,1.34c-3.1,2.6-7.33,5.94-9.92,8.85,1.26-2.05,2.46-4,3.55-5.72a42.2,42.2,0,0,1,8-6.88c4.25-2.56,6.28-4.4,4.58-5.09-1.18-.48-6.08,3.24-9.65,7.3,1-1.47,1.68-2.58,2.11-3.23.2-.3.41-.63.62-1a99.06,99.06,0,0,0,9.16-8.28C142.51,316.42,145.22,310.93,142.32,312.79Z" style="fill: rgb(255, 255, 255); opacity: 0.6; transform-origin: 120.863px 339.223px 0px;" class="animable" id="eln2tkrn917r"></path>
+                </g>
+            </g>
+            <g id="freepik--Clouds--inject-1--inject-2" style="transform-origin: 250.001px 168.024px 0px;" class="animable">
+                <path d="M453.45,123.39s-3.83-11-14.85-11.49-9.1,10.06-16.76,12.93-10.54-5.27-17.25-3.35-2.39,7.18-8.14,9.1-5.27-3.35-13.89,1-10.54,5.75-12.46,6.23-19.16,3.35-19.16,3.35H470.22s3.36-10.54-3.35-14.85S460.64,127.23,453.45,123.39Z" style="fill: #346EF1; transform-origin: 411.001px 126.522px 0px;" id="elt0414boal8a" class="animable"></path>
+                <g id="elj35nhk96ywi">
+                    <path d="M453.45,123.39s-3.83-11-14.85-11.49-9.1,10.06-16.76,12.93-10.54-5.27-17.25-3.35-2.39,7.18-8.14,9.1-5.27-3.35-13.89,1-10.54,5.75-12.46,6.23-19.16,3.35-19.16,3.35H470.22s3.36-10.54-3.35-14.85S460.64,127.23,453.45,123.39Z" style="fill: rgb(255, 255, 255); opacity: 0.7; transform-origin: 411.001px 126.522px 0px;" class="animable" id="ele0kr7l65d2p"></path>
+                </g>
+                <path d="M234.27,105.59s-2.33-6.68-9-7-5.51,6.09-10.16,7.84-6.39-3.2-10.46-2-1.45,4.36-4.93,5.52-3.2-2-8.43.58-6.38,3.49-7.55,3.78-11.61,2-11.61,2h72.31s2-6.39-2-9S238.62,107.91,234.27,105.59Z" style="fill: #346EF1; transform-origin: 208.535px 107.444px 0px;" id="el5xp4a1slcpa" class="animable"></path>
+                <g id="eldwu6pcppyoj">
+                    <path d="M234.27,105.59s-2.33-6.68-9-7-5.51,6.09-10.16,7.84-6.39-3.2-10.46-2-1.45,4.36-4.93,5.52-3.2-2-8.43.58-6.38,3.49-7.55,3.78-11.61,2-11.61,2h72.31s2-6.39-2-9S238.62,107.91,234.27,105.59Z" style="fill: rgb(255, 255, 255); opacity: 0.8; transform-origin: 208.535px 107.444px 0px;" class="animable" id="elcjviksw41ul"></path>
+                </g>
+                <path d="M112.63,223s-3.13-9-12.12-9.38-7.44,8.21-13.69,10.56-8.61-4.31-14.08-2.74-2,5.86-6.65,7.43-4.3-2.74-11.34.78-8.6,4.69-10.17,5.09-15.64,2.73-15.64,2.73h97.38s2.73-8.6-2.74-12.12S118.49,226.15,112.63,223Z" style="fill: #346EF1; transform-origin: 77.9706px 225.539px 0px;" id="elrtf2eqqkewr" class="animable"></path>
+                <g id="elfvkptxto474">
+                    <g style="opacity: 0.7; transform-origin: 77.9706px 225.539px 0px;" class="animable" id="el8lmyqqi53al">
+                        <path d="M112.63,223s-3.13-9-12.12-9.38-7.44,8.21-13.69,10.56-8.61-4.31-14.08-2.74-2,5.86-6.65,7.43-4.3-2.74-11.34.78-8.6,4.69-10.17,5.09-15.64,2.73-15.64,2.73h97.38s2.73-8.6-2.74-12.12S118.49,226.15,112.63,223Z" style="fill: rgb(255, 255, 255); transform-origin: 77.9706px 225.539px 0px;" id="eln3ha9ebw0b7" class="animable"></path>
+                    </g>
+                </g>
+            </g>
+            <g id="freepik--Shadow--inject-1--inject-2" style="transform-origin: 255.025px 391.48px 0px;" class="animable">
+                <ellipse cx="228.3" cy="393.98" rx="106.06" ry="7.52" style="fill: #346EF1; transform-origin: 228.3px 393.98px 0px;" id="elzipuhf9afbk" class="animable"></ellipse>
+                <ellipse cx="327.68" cy="385.22" rx="60.13" ry="3.76" style="fill: #346EF1; transform-origin: 327.68px 385.22px 0px;" id="el18xupkx3zw3" class="animable"></ellipse>
+                <g id="el9m33q7p57dt">
+                    <g style="opacity: 0.6; transform-origin: 255.025px 391.48px 0px;" class="animable" id="el4g9p631amir">
+                        <ellipse cx="228.3" cy="393.98" rx="106.06" ry="7.52" style="fill: rgb(255, 255, 255); transform-origin: 228.3px 393.98px 0px;" id="elkfiwd8ab4pk" class="animable"></ellipse>
+                        <ellipse cx="327.68" cy="385.22" rx="60.13" ry="3.76" style="fill: rgb(255, 255, 255); transform-origin: 327.68px 385.22px 0px;" id="el0v29qti6nhbr" class="animable"></ellipse>
+                    </g>
+                </g>
+            </g>
+            <g id="freepik--Character--inject-1--inject-2" style="transform-origin: 258.22px 250.913px 0px;" class="animable">
+                <line x1="227.53" y1="281.85" x2="246.18" y2="268.49" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 236.855px 275.17px 0px;" id="elkc3v4fez74" class="animable"></line>
+                <path d="M286.48,374.66l-1.05,11.85s-5.31,2.33-5.3,3.11,1,1.85,5.33,1.85,5.74-1.64,5.74-2.87,9.22-11.48,9.22-11.48a3.79,3.79,0,0,0-.61-3.69c-1.44-1.64-6.36-1.84-6.36-1.84Z" style="fill: #346EF1; transform-origin: 290.391px 381.53px 0px;" id="elq31fgj9ip9" class="animable"></path>
+                <path d="M280.14,390.41s7.21-.47,9.14-1.57,8.8-11.56,9.35-12.39a4.71,4.71,0,0,0,.55-2.2" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 289.66px 382.33px 0px;" id="el2555w89ynn3" class="animable"></path>
+                <path d="M295.72,371.76s5.85,1.11,5.29,3.62-9.74,13.64-11.13,15-10,1.39-9.74,0,5.29-3.9,5.29-3.9l1.67-10" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 290.591px 381.586px 0px;" id="eliu9mpuafqle" class="animable"></path>
+                <path d="M172.52,384.29,155.3,392.7s-2.25,1.64,2.26,1.64,28.28.2,28.28.2,2.67.62,3.28-.61c1-2,1.44-3.28.82-3.9S172.52,384.29,172.52,384.29Z" style="fill: #346EF1; transform-origin: 172.482px 389.493px 0px;" id="el4oicxpazy4m" class="animable"></path>
+                <path d="M156.92,392.41h30.55" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 172.195px 392.41px 0px;" id="elz1h6desivx" class="animable"></path>
+                <path d="M171.36,385.36s-17.54,7.52-17.26,8.35,17.81.84,24.49.84,11.42.28,11.42-1.39" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 172.053px 389.964px 0px;" id="elhe5z1qv906j" class="animable"></path>
+                <path d="M295.72,371.76l-57.89-42.31-2-42.59a27.93,27.93,0,0,1-7.14,4.57c-3.58,1.37-24.32,11.85-24.32,11.85s9.19,32.57,10.86,35.36,71.82,37.85,71.82,37.85Z" style="fill: rgb(38, 50, 56); transform-origin: 250.045px 331.675px 0px;" id="el7gciu3lqti" class="animable"></path>
+                <path d="M190,391.49s-2.23-.56-4.73-1.12-13.92-5-13.92-5a9.77,9.77,0,0,1-.28-2.78,4,4,0,0,1,1.67-3.06s-43.43-57.9-44.54-59.57-.28-4.46,7.24-10.3,56.72-35.87,56.72-35.87c-1.89-2.24,1.67-3.62,1.67-3.62l4.46,1.39,29.23,10.3,11.69-7.79s1.95,7.23-5.29,12.8-73.43,35-73.43,35l-1.1.07L189.17,387S191.17,390.56,190,391.49Z" style="fill: rgb(38, 50, 56); transform-origin: 183.624px 330.83px 0px;" id="elju6vg71c9er" class="animable"></path>
+                <polyline points="153.07 314.54 158.57 321.42 156.37 312.34" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 155.82px 316.88px 0px;" id="eliqipv4n7xfi" class="animable"></polyline>
+                <path d="M207.28,303.81s11.28,17.61,15.41,21.19" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 214.985px 314.405px 0px;" id="eliiuhztu1ldh" class="animable"></path>
+                <path d="M208.93,303.26a82.58,82.58,0,0,0,9.9,7.43" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 213.88px 306.975px 0px;" id="elhmeipid7vy" class="animable"></path>
+                <polygon points="228.71 210.03 189.65 236.65 198.19 271.85 227.18 281.57 265.86 254.01 261.19 218.6 228.71 210.03" style="fill: #346EF1; mix-blend-mode: multiply; transform-origin: 227.755px 245.8px 0px;" id="elrdy3ot0zm5a" class="animable"></polygon>
+                <line x1="189.86" y1="236.65" x2="192.34" y2="247.65" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 191.1px 242.15px 0px;" id="elatdq18pdqx6" class="animable"></line>
+                <polyline points="194.4 255.68 198.3 271.55 227.53 281.85 223.91 255.68" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 210.965px 268.765px 0px;" id="el1a3q68q7vmn" class="animable"></polyline>
+                <line x1="223.63" y1="253.46" x2="222.52" y2="246.78" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 223.075px 250.12px 0px;" id="elj34mtqcuh1" class="animable"></line>
+                <polyline points="258.15 260.14 265.94 254.29 262.04 221.17" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 262.045px 240.655px 0px;" id="elmuhcm8ddbjl" class="animable"></polyline>
+                <line x1="226.41" y1="244.83" x2="247.57" y2="228.96" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 236.99px 236.895px 0px;" id="el9jmd2gz0w5r" class="animable"></line>
+                <polyline points="246.46 214.76 228.92 210.03 190.5 236.2" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 218.48px 223.115px 0px;" id="el8jzbo1e43bh" class="animable"></polyline>
+                <line x1="190.78" y1="237.31" x2="196.63" y2="238.98" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 193.705px 238.145px 0px;" id="el1dgljhlxfry" class="animable"></line>
+                <line x1="206.65" y1="241.21" x2="222.52" y2="245.66" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 214.585px 243.435px 0px;" id="elbahsd3y9kzf" class="animable"></line>
+                <line x1="243.67" y1="214.21" x2="219.73" y2="232.58" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 231.7px 223.395px 0px;" id="elk9c4383ad9" class="animable"></line>
+                <line x1="217.78" y1="234.25" x2="209.15" y2="240.93" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 213.465px 237.59px 0px;" id="elh2t2jbbkfgg" class="animable"></line>
+                <path d="M244.27,198.85s6.08,50.15,6.08,52.38-5.57,3.34-5.57,6.12a25,25,0,0,1-1.39,6.68s-1.11,1.12-1.11,2,1.95.56,3.62-.27,2.22-3.9,2.22-3.9a49.53,49.53,0,0,0-.83,5.57l-1.11,1.11s-3.34,3.06-1.12,3.34,12.53-3.62,13.09-6.12-1.4-14.48-1.4-14.48,8.08-56.51,8.08-61.8a7.42,7.42,0,0,0-4.46-7" style="fill: rgb(255, 255, 255); transform-origin: 253.556px 227.187px 0px;" id="elwqmfj8pvay7" class="animable"></path>
+                <g style="clip-path: url(&quot;#freepik--clip-path--inject-1--inject-2&quot;); transform-origin: 257.508px 226.535px 0px;" id="elq0mg9grs6w" class="animable">
+                    <g id="elcgwshjp63wv">
+                        <path d="M264.79,196.52c-1.17-4.45-2.44-12.53-2.44-12.53l-5.3-1.61-7,8.41,5.53-3.4v66.73c0,3.4-4.25,16.57-4.25,16.57s8.79-1.85,7.37-9.85-3.12-6.72-.57-22.87S266,201,264.79,196.52Z" style="fill: #346EF1; opacity: 0.3; mix-blend-mode: multiply; transform-origin: 257.508px 226.535px 0px;" class="animable" id="elg9fh3ngywjo"></path>
+                    </g>
+                </g>
+                <path d="M244.27,198.85s6.08,50.15,6.08,52.38-5.57,3.34-5.57,6.12a25,25,0,0,1-1.39,6.68s-1.11,1.12-1.11,2,1.95.56,3.62-.27,2.22-3.9,2.22-3.9a49.53,49.53,0,0,0-.83,5.57l-1.11,1.11s-3.34,3.06-1.12,3.34,12.53-3.62,13.09-6.12-1.4-14.48-1.4-14.48,8.08-56.51,8.08-61.8a7.42,7.42,0,0,0-4.46-7" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 253.556px 227.187px 0px;" id="el0hvzjnr875ps" class="animable"></path>
+                <path d="M251,265.29a5.56,5.56,0,0,1-.28,3.57,14.32,14.32,0,0,1-1.92,2.48" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 249.986px 268.315px 0px;" id="el64x9zsigwwd" class="animable"></path>
+                <path d="M254.33,265.29a16.77,16.77,0,0,1-.83,3.3" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 253.915px 266.94px 0px;" id="el57x66qjj6gp" class="animable"></path>
+                <path d="M256.81,264.46a17.41,17.41,0,0,1-.83,3.3" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 256.395px 266.11px 0px;" id="elwgd0z0omt3h" class="animable"></path>
+                <path d="M166.88,160.24c-.32-2.88-6.08-8.32-14.08-9.92s-16.65-1.6-19.85,1c-1.2.95-2,3.16-2.52,5.54.57-1.22,1.72-3.69,2.91-4.68,5.89-4.91,7.53-2,8.51,2.29s-.33,16-.33,16-13.42,3.93-11.46-2.95a17.38,17.38,0,0,1-.6-3c0,.51,0,.82,0,.82l-.64,4.16-5.44,1-18.9-.6s9.62,6,15.06,6a15.93,15.93,0,0,0,9.58-3.71l35,2.67S167.2,163.12,166.88,160.24Z" style="fill: #346EF1; transform-origin: 135.692px 162.561px 0px;" id="el9xhp3ar7em" class="animable"></path>
+                <path d="M126.08,170.22l-21.64-.33s6,5.66,14,5.66,10.66-3.33,10.66-3.33l35,2.67s4.57-8.71,2.24-16.36-23.33-10.22-29.17-8.81c-7.22,1.75-7.7,7.85-7.7,11.18a52.85,52.85,0,0,1-.67,7.33" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 135.721px 162.451px 0px;" id="el4vcc2nkwha4" class="animable"></path>
+                <g style="clip-path: url(&quot;#freepik--clip-path-2--inject-1--inject-2&quot;); transform-origin: 135.655px 185.695px 0px;" id="elny6z3e1edip" class="animable">
+                    <g id="ele12mbhw5yg9">
+                        <path d="M146.31,173.71l-14.13.25s-4,5.95-3,7.69a10,10,0,0,0,3,3s-1,7.94.25,10.67,11.16,1.48,11.16,1.48a16.37,16.37,0,0,1-7.2,2.24c-4.71.49-6.19-.5-6.94-3.23s-1-10.57-1-10.57L125,181.65l2.48-6.7,2.73-2.72Z" style="fill: #346EF1; opacity: 0.3; mix-blend-mode: multiply; transform-origin: 135.655px 185.695px 0px;" class="animable" id="eltu26jjh70wq"></path>
+                    </g>
+                </g>
+                <path d="M127.75,173.22s-3.67,8.66-2,10,2.66,2,2.66,2,1,11.65,2.66,13.65,12.32-1.33,12.32-1.33S165,219.17,165.7,215.17s-2-19-2-20.64-4.66-6-4.66-6" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 145.565px 194.442px 0px;" id="elqlc6rwub1pj" class="animable"></path>
+                <path d="M147.06,173.55s.66,3,2.66,3.33,3.66-3,3.66-3Z" style="fill: rgb(38, 50, 56); transform-origin: 150.22px 175.227px 0px;" id="elapp334s3ofg" class="animable"></path>
+                <path d="M164,174.89s2,6-.34,9.32-3.32,3.33-3.32,3.33c-2,3.33-7.33-4-7.33-4s4-.18,5-2.84-.4-6.55-.4-6.55Z" style="fill: rgb(38, 50, 56); transform-origin: 158.903px 181.279px 0px;" id="ell0q3zulc5d" class="animable"></path>
+                <path d="M158,174.89s1,4.66,0,7-5,1.66-5,1.66l-2,5" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 154.722px 181.72px 0px;" id="eluhqezzusab" class="animable"></path>
+                <path d="M130.78,187.14s3.86.83,6.33-3.58" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.626315px; transform-origin: 133.945px 185.381px 0px;" id="ellw25gtufawj" class="animable"></path>
+                <g id="elrpcgv9tcwz">
+                    <rect x="193.19" y="209.88" width="8.72" height="13.37" style="fill: rgb(38, 50, 56); transform-origin: 197.55px 216.565px 0px; transform: rotate(-20.22deg);" class="animable" id="el73v41lqdn1u"></rect>
+                </g>
+                <g id="elzijnwebpkch">
+                    <rect x="194.92" y="212.12" width="4.17" height="6.2" style="fill: rgb(255, 255, 255); transform-origin: 197.005px 215.22px 0px; transform: rotate(-20.22deg);" class="animable" id="el2x2afe6ykyy"></rect>
+                </g>
+                <g id="el4l5khf9cy5q">
+                    <rect x="193.93" y="207.06" width="1.84" height="4.07" style="fill: rgb(255, 255, 255); stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 194.85px 209.095px 0px; transform: rotate(-20.22deg);" class="animable" id="elyqqtyrl666l"></rect>
+                </g>
+                <line x1="186.43" y1="261.71" x2="193.84" y2="270.16" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 190.135px 265.935px 0px;" id="el2yaqhh400k5" class="animable"></line>
+                <g style="clip-path: url(&quot;#freepik--clip-path-3--inject-1--inject-2&quot;); transform-origin: 309.309px 228.357px 0px;" id="eltuabww1drt" class="animable">
+                    <polygon points="262.55 157.45 255.2 161.69 251.05 154.44 258.39 150.21 262.55 157.45" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 256.8px 155.95px 0px;" id="elbzisnecwjqs" class="animable"></polygon>
+                    <polygon points="260.07 149.2 248.5 155.88 241.61 143.12 253.18 136.44 260.07 149.2" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 250.84px 146.16px 0px;" id="eliutctduefv" class="animable"></polygon>
+                    <g id="eluaulj8yju7">
+                        <circle cx="308.56" cy="248.43" r="88.96" style="fill: rgb(255, 255, 255); transform-origin: 308.56px 248.43px 0px; transform: rotate(-45deg);" class="animable" id="elmdaud99e4x"></circle>
+                    </g>
+                    <path d="M309.34,144.2A102.69,102.69,0,1,0,412,246.89,102.69,102.69,0,0,0,309.34,144.2Zm0,191.65a89,89,0,1,1,89-89A89,89,0,0,1,309.34,335.85Z" style="fill: rgb(38, 50, 56); stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 309.309px 246.892px 0px;" id="eldxcpx6n7o0v" class="animable"></path>
+                    <path d="M372.35,169.43a99.72,99.72,0,0,0-34.68-18.31" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.67017px; transform-origin: 355.01px 160.275px 0px;" id="ell6npwf5qnyc" class="animable"></path>
+                    <path d="M328.2,148.82a101.56,101.56,0,0,0-11-1.47" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.67017px; transform-origin: 322.7px 148.085px 0px;" id="el3u82voh05pk" class="animable"></path>
+                    <path d="M384.24,301.79a92.91,92.91,0,0,0-2-112.42" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 392.215px 245.58px 0px;" id="el0foab638rchw" class="animable"></path>
+                    <path d="M371.26,316.08a91.26,91.26,0,0,0,8.22-8.35" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 375.37px 311.905px 0px;" id="elr5ipnj81rfo" class="animable"></path>
+                    <path d="M271.59,331.75a93,93,0,0,0,96-12.5" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 319.59px 329.503px 0px;" id="elre6vkm0sr6i" class="animable"></path>
+                    <path d="M258.34,324.5a92.07,92.07,0,0,0,8.61,5" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 262.645px 327px 0px;" id="el2xkyqntbps9" class="animable"></path>
+                    <path d="M248.38,316.94a92.54,92.54,0,0,0,7.32,5.75" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 252.04px 319.815px 0px;" id="el1akzuunegwz" class="animable"></path>
+                    <path d="M283.66,157.63a92.88,92.88,0,0,0-37.74,157.09" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 250.07px 236.175px 0px;" id="elvaljlgidcrp" class="animable"></path>
+                    <path d="M375,181.23a93,93,0,0,0-84.26-25.33" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 332.87px 167.631px 0px;" id="ela0xns4nfl9t" class="animable"></path>
+                    <rect x="295.93" y="279.78" width="26.72" height="7.24" style="fill: #346EF1; transform-origin: 309.29px 283.4px 0px;" id="el7ou38vpa6hl" class="animable"></rect>
+                    <path d="M316.8,246.89a7.45,7.45,0,0,0-6.12-7.33l-.79-48.87h-1.11L308,239.56a7.45,7.45,0,0,0-.23,14.62l-.28,17.34h3.7l-.28-17.34A7.47,7.47,0,0,0,316.8,246.89Zm-7.46,4a4,4,0,1,1,4-4A4,4,0,0,1,309.34,250.89Z" style="fill: rgb(38, 50, 56); transform-origin: 309.334px 231.105px 0px;" id="elzp5zl5tajwi" class="animable"></path>
+                    <circle cx="309.34" cy="246.89" r="4.11" style="fill: #346EF1; transform-origin: 309.34px 246.89px 0px;" id="elu3mziq5anj7" class="animable"></circle>
+                    <line x1="309.34" y1="162.92" x2="309.34" y2="177.73" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 309.34px 170.325px 0px;" id="elq5ryrp8awye" class="animable"></line>
+                    <line x1="309.34" y1="316.56" x2="309.34" y2="331.37" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 309.34px 323.965px 0px;" id="elj67tg2fw2a" class="animable"></line>
+                    <line x1="267.23" y1="174.21" x2="274.63" y2="187.03" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 270.93px 180.62px 0px;" id="el4xq78g2m1wc" class="animable"></line>
+                    <line x1="344.05" y1="307.26" x2="351.45" y2="320.09" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 347.75px 313.675px 0px;" id="elx4mxqx7d90k" class="animable"></line>
+                    <line x1="236.4" y1="205.03" x2="249.22" y2="212.44" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 242.81px 208.735px 0px;" id="el21v6daajr5" class="animable"></line>
+                    <line x1="369.45" y1="281.85" x2="382.28" y2="289.26" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 375.865px 285.555px 0px;" id="el3057uyv8wns" class="animable"></line>
+                    <line x1="393.56" y1="247.15" x2="378.75" y2="247.15" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 386.155px 247.15px 0px;" id="elz6jb9fz6cf" class="animable"></line>
+                    <line x1="239.92" y1="247.15" x2="225.11" y2="247.15" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 232.515px 247.15px 0px;" id="elzga4og3wim" class="animable"></line>
+                    <line x1="393.56" y1="247.15" x2="378.75" y2="247.15" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 386.155px 247.15px 0px;" id="elbl8dbwvatak" class="animable"></line>
+                    <line x1="239.92" y1="247.15" x2="225.11" y2="247.15" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 232.515px 247.15px 0px;" id="eltxxv0n9d9ds" class="animable"></line>
+                    <line x1="382.28" y1="205.03" x2="369.45" y2="212.44" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 375.865px 208.735px 0px;" id="elri1gyktl0e" class="animable"></line>
+                    <line x1="249.22" y1="281.85" x2="236.4" y2="289.26" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 242.81px 285.555px 0px;" id="elm857yfk3sak" class="animable"></line>
+                    <line x1="351.45" y1="174.21" x2="344.05" y2="187.03" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 347.75px 180.62px 0px;" id="elx569hfln1l" class="animable"></line>
+                    <line x1="274.63" y1="307.26" x2="267.23" y2="320.09" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.34035px; transform-origin: 270.93px 313.675px 0px;" id="el44yc0g00ejt" class="animable"></line>
+                    <rect x="305.1" y="140.97" width="8.48" height="7.5" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 309.34px 144.72px 0px;" id="el9e3tux84igq" class="animable"></rect>
+                    <rect x="302.66" y="120.93" width="13.36" height="19.61" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 309.34px 130.735px 0px;" id="elo9s6mnjetf" class="animable"></rect>
+                    <rect x="299.46" y="107.13" width="19.34" height="13.36" style="fill: #346EF1; transform-origin: 309.13px 113.81px 0px;" id="el3igz7dn31qa" class="animable"></rect>
+                    <rect x="299.67" y="107.13" width="19.34" height="13.36" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 309.34px 113.81px 0px;" id="elih131czct7j" class="animable"></rect>
+                    <line x1="301.82" y1="115.44" x2="301.82" y2="107.43" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 301.82px 111.435px 0px;" id="elq65bycyi84g" class="animable"></line>
+                    <line x1="301.82" y1="120.74" x2="301.82" y2="117.29" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 301.82px 119.015px 0px;" id="ely8d8p9k6yw" class="animable"></line>
+                    <line x1="304.28" y1="120.74" x2="304.28" y2="107.43" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 304.28px 114.085px 0px;" id="el682a05k2brn" class="animable"></line>
+                    <line x1="306.74" y1="110.76" x2="306.74" y2="107.43" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 306.74px 109.095px 0px;" id="elsgqy4vjcxhl" class="animable"></line>
+                    <line x1="306.74" y1="120.74" x2="306.74" y2="112.36" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 306.74px 116.55px 0px;" id="elswc9cerqf7" class="animable"></line>
+                    <line x1="310.81" y1="120.74" x2="310.81" y2="107.43" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 310.81px 114.085px 0px;" id="eluzqfu3syxwf" class="animable"></line>
+                </g>
+                <g id="eluse48jybhet">
+                    <path d="M168.13,213.14l7.19.5-.24-2.73S168.63,210.41,168.13,213.14Z" style="fill: #346EF1; opacity: 0.3; mix-blend-mode: multiply; transform-origin: 171.725px 212.257px 0px;" class="animable" id="eltl1ap2of1g"></path>
+                </g>
+                <g style="clip-path: url(&quot;#freepik--clip-path-4--inject-1--inject-2&quot;); transform-origin: 151.725px 239.88px 0px;" id="el4w5fuz9ufcj" class="animable">
+                    <g id="elfy8tqkdgpbe">
+                        <path d="M148.32,269.87,163,260.14l-18.75,7.15s-1.7-38.25-.42-41.22,9.35-8.5,9.35-8.5-.48-3.08,2.12-4.25a7.9,7.9,0,0,1,5.53,0l1.85.7c-2.13-1.2-5.57-3.63-10.86-8.57h-.12l1.28,1.23-.56,5-5.62,4.59c-1.27,1.28-6.07,7.38-6.07,7.38l-.28,50.66,7.63-4.91Z" style="fill: #346EF1; opacity: 0.3; mix-blend-mode: multiply; transform-origin: 151.725px 239.88px 0px;" class="animable" id="eldrowsahv38l"></path>
+                    </g>
+                </g>
+                <path d="M152.37,211.7s-11.69,9.47-11.69,12-.84,49.55-.28,50.66S163,260.14,163,260.14l-2.23-20.32" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 151.604px 243.059px 0px;" id="elfy9mrhdz8wr" class="animable"></path>
+                <line x1="154.6" y1="234.81" x2="178.26" y2="253.74" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 166.43px 244.275px 0px;" id="el9wkf09o327p" class="animable"></line>
+                <g style="clip-path: url(&quot;#freepik--clip-path-5--inject-1--inject-2&quot;); transform-origin: 220.815px 180.425px 0px;" id="elo2632hvtbr" class="animable">
+                    <g id="eldyi36h72wmb">
+                        <path d="M257.05,182.38,242.8,178l-46.45-7.81-11.77,12.91s10.2-6.37,13.17-6.37,47.77,12.74,52,13.93Z" style="fill: #346EF1; opacity: 0.3; mix-blend-mode: multiply; transform-origin: 220.815px 180.425px 0px;" class="animable" id="el2op484ltvjq"></path>
+                    </g>
+                </g>
+                <path d="M170.62,192s22.95-21.81,25.73-21.81,48.71,9.18,52.05,9.74,8.91,1.67,8.91,1.67-9.74,12.25-13.08,16.42-5,6.68-5,6.68l-37.58-17.25" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 213.965px 187.445px 0px;" id="eln9ztn5zhmu" class="animable"></path>
+                <line x1="208.04" y1="191.66" x2="217.51" y2="216.71" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 212.775px 204.185px 0px;" id="el2bzgssjfnyq" class="animable"></line>
+                <polyline points="179.09 229.24 176.86 231.47 166.01 217.55" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 172.55px 224.51px 0px;" id="elxx7eoqzmqao" class="animable"></polyline>
+                <polyline points="197.37 192.65 208.38 190.72 199.02 197.32" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 202.875px 194.02px 0px;" id="elyft1q3j0fp" class="animable"></polyline>
+                <line x1="160.72" y1="239.82" x2="146.74" y2="237.77" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 153.73px 238.795px 0px;" id="elyofh28o107q" class="animable"></line>
+                <path d="M152.93,206.69a11.44,11.44,0,0,0-.28,7.8c1.39,4.17,6.12,11.41,6.12,11.41l6.12-8.63" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 158.493px 216.295px 0px;" id="elomnls2mwoh" class="animable"></path>
+                <path d="M166.84,213.93s3.07-2.78,5.85-2.78h4.73s-.83-10.86-4.73-16.71-9.19-2.78-9.19-2.78" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 170.46px 202.392px 0px;" id="ellz6x9id94n" class="animable"></path>
+                <path d="M161.83,261.81l33.41-15.59,2.78-9.74L209.43,234s2.23-2.23,1.95,0-3.34,3.06-4.45,5.29-1.12,6.68-2.51,8.63-6.4,4.18-6.4,4.18-37.58,31.45-40.36,33.12-8.35-14.2-8.35-14.2" style="fill: rgb(255, 255, 255); transform-origin: 180.357px 259.176px 0px;" id="elkeenygy6uvn" class="animable"></path>
+                <g style="clip-path: url(&quot;#freepik--clip-path-6--inject-1--inject-2&quot;); transform-origin: 169px 271.976px 0px;" id="elsurmopo1wxs" class="animable">
+                    <g id="eldm4krixbsmt">
+                        <path d="M148.32,269.87c1.29,2.07,6.56,10.64,6.93,14,.43,3.83,3.83,0,3.83,0l30.6-25.49S159.5,277.49,157,276.64s-3-7.22-3-7.22l9-9.28Z" style="fill: #346EF1; opacity: 0.3; mix-blend-mode: multiply; transform-origin: 169px 271.976px 0px;" class="animable" id="els407f6ccclo"></path>
+                    </g>
+                </g>
+                <path d="M161.83,261.81l33.41-15.59,2.78-9.74L209.43,234s2.23-2.23,1.95,0-3.34,3.06-4.45,5.29-1.12,6.68-2.51,8.63-6.4,4.18-6.4,4.18-37.58,31.45-40.36,33.12-8.35-14.2-8.35-14.2" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.835087px; transform-origin: 180.357px 259.176px 0px;" id="el4hwyj28avvh" class="animable"></path>
+                <path d="M209.43,234s-5.45,3.25-4.9,4.35" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 206.961px 236.175px 0px;" id="el2goefvviljb" class="animable"></path>
+                <line x1="205.08" y1="235.02" x2="200.95" y2="237.22" style="fill: none; stroke: rgb(38, 50, 56); stroke-linecap: round; stroke-linejoin: round; stroke-width: 0.417543px; transform-origin: 203.015px 236.12px 0px;" id="elngkbbned4mc" class="animable"></line>
+            </g>
+            <defs>
+                <clipPath id="freepik--clip-path--inject-1--inject-2">
+                    <path d="M244.27,198.85s6.08,50.15,6.08,52.38-5.57,3.34-5.57,6.12a25,25,0,0,1-1.39,6.68s-1.11,1.12-1.11,2,1.95.56,3.62-.27,2.22-3.9,2.22-3.9a49.53,49.53,0,0,0-.83,5.57l-1.11,1.11s-3.34,3.06-1.12,3.34,12.53-3.62,13.09-6.12-1.4-14.48-1.4-14.48,8.08-56.51,8.08-61.8a7.42,7.42,0,0,0-4.46-7" style="fill:#fff;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.8350869999999999px"></path>
+                </clipPath>
+                <clipPath id="freepik--clip-path-2--inject-1--inject-2">
+                    <path d="M127.75,173.22s-3.67,8.66-2,10,2.66,2,2.66,2,1,11.65,2.66,13.65,12.32-1.33,12.32-1.33S165,219.17,165.7,215.17s-2-19-2-20.64-4.66-6-4.66-6" style="fill:none;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.8350869999999999px"></path>
+                </clipPath>
+                <clipPath id="freepik--clip-path-3--inject-1--inject-2">
+                    <path d="M230.21,174.85l1.87.72,26.68,4.88s4.35,2.29,5.88,4.73.15,11.34.15,11.34L262,217.46,266.47,255l-7.8,5.85.3,3.71c.21.06-.05,4.95-11.62,7,0,0-2.4,1.2-3.1.67-1.77-1.33-.35-1.22-.35-1.22l-4.68,3a16.85,16.85,0,0,1-.74,7c-1.22,4-2.06,4.78-2.06,4.78L238.55,323l5.13,7.31,67,40.67H434.2V98.5H228.7v75.78Z" style="fill:none"></path>
+                </clipPath>
+                <clipPath id="freepik--clip-path-4--inject-1--inject-2">
+                    <path d="M152.37,211.7s-11.69,9.47-11.69,12-.84,49.55-.28,50.66S163,260.14,163,260.14l-2.23-20.32" style="fill:none;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.8350869999999999px"></path>
+                </clipPath>
+                <clipPath id="freepik--clip-path-5--inject-1--inject-2">
+                    <path d="M170.62,192s22.95-21.81,25.73-21.81,48.71,9.18,52.05,9.74,8.91,1.67,8.91,1.67-9.74,12.25-13.08,16.42-5,6.68-5,6.68l-37.58-17.25" style="fill:none;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.8350869999999999px"></path>
+                </clipPath>
+                <clipPath id="freepik--clip-path-6--inject-1--inject-2">
+                    <path d="M161.83,261.81l33.41-15.59,2.78-9.74L209.43,234s2.23-2.23,1.95,0-3.34,3.06-4.45,5.29-1.12,6.68-2.51,8.63-6.4,4.18-6.4,4.18-37.58,31.45-40.36,33.12-8.35-14.2-8.35-14.2" style="fill:#fff;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.8350869999999999px"></path>
+                </clipPath>
+            </defs>
+            <defs>
+                <filter id="active" height="200%">
+                    <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="2"></feMorphology>
+                    <feFlood flood-color="#32DFEC" flood-opacity="1" result="PINK"></feFlood>
+                    <feComposite in="PINK" in2="DILATED" operator="in" result="OUTLINE"></feComposite>
+                    <feMerge>
+                        <feMergeNode in="OUTLINE"></feMergeNode>
+                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                </filter>
+                <filter id="hover" height="200%">
+                    <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="2"></feMorphology>
+                    <feFlood flood-color="#ff0000" flood-opacity="0.5" result="PINK"></feFlood>
+                    <feComposite in="PINK" in2="DILATED" operator="in" result="OUTLINE"></feComposite>
+                    <feMerge>
+                        <feMergeNode in="OUTLINE"></feMergeNode>
+                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                    <feColorMatrix type="matrix" values="0   0   0   0   0                0   1   0   0   0                0   0   0   0   0                0   0   0   1   0 "></feColorMatrix>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+    </div>
+</body>
+
 </html>

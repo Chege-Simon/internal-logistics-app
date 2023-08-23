@@ -21,8 +21,8 @@ class BagController extends Controller
      */
     public function index()
     {
-        $bags = Bag::with('user')->get();
-        return view('bags/bags',['bags'=>$bags]);
+        $bags = Bag::with('user')->with('trip')->with('trip.trip_logs')->get();
+        return view('bags/bags', ['bags' => $bags]);
     }
 
     /**
@@ -32,8 +32,8 @@ class BagController extends Controller
      */
     public function create()
     {
-        $branches = User::all()->where('role', 'like', "branch")->pluck('name','id');
-        return view('bags/bag_create',['branches'=>$branches]);
+        $branches = User::all()->where('role', 'like', "branch")->pluck('name', 'id');
+        return view('bags/bag_create', ['branches' => $branches]);
     }
 
     /**
@@ -44,14 +44,14 @@ class BagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = $request->bag_label."@".$request->user_id;
+        $tag = $request->bag_label . "@" . $request->user_id;
         $request->request->add(['bag_tag' => $tag]);
 
         // Validate the data submitted by user
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'bag_label' => 'required|max:225',
-            'bag_tag' => 'required|max:225|'. Rule::unique('bags'),
+            'bag_tag' => 'required|max:225|' . Rule::unique('bags'),
         ]);
 
         // if fails redirects back with errors
@@ -79,7 +79,7 @@ class BagController extends Controller
     public function show($id)
     {
         $bag = Bag::findOrFail($id);
-        return view('bags/bag',['bag'=>$bag]);
+        return view('bags/bag', ['bag' => $bag]);
     }
 
     /**
@@ -91,8 +91,8 @@ class BagController extends Controller
     public function edit($id)
     {
         $bag = Bag::findOrFail($id);
-        $branches = User::all()->where('role', 'like', "branch")->pluck('name','id');
-        return view('bags/bag_update',['bag'=>$bag, 'branches'=>$branches]);
+        $branches = User::all()->where('role', 'like', "branch")->pluck('name', 'id');
+        return view('bags/bag_update', ['bag' => $bag, 'branches' => $branches]);
     }
 
     /**
@@ -104,13 +104,13 @@ class BagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = $request->bag_label."@".$request->user_id;
+        $tag = $request->bag_label . "@" . $request->user_id;
         $request->request->add(['bag_tag' => $tag]);
         // Validate the data submitted by bag
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'bag_label' => 'required|max:225',
-            'bag_tag' => 'required|max:225|'. Rule::unique('bags'),
+            'bag_tag' => 'required|max:225|' . Rule::unique('bags'),
         ]);
 
         // if fails redirects back with errors

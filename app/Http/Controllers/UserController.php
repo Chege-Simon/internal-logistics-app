@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users/users',['users'=>$users]);
+        return view('users/users', ['users' => $users]);
     }
 
     /**
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users/user_create',["msg"=>"User Account Page"]);
+        return view('users/user_create', ["msg" => "User Account Page"]);
     }
 
     /**
@@ -43,7 +44,8 @@ class UserController extends Controller
         // Validate the data submitted by user
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:225|'. Rule::unique('users'),
+            'email' => 'required|email|max:225|' . Rule::unique('users'),
+            'role' => 'integer',
         ]);
 
         // if fails redirects back with errors
@@ -55,6 +57,7 @@ class UserController extends Controller
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
+            'role' => $request['role'],
             'password' => Hash::make($request['password']),
         ]);
         Session::flash('message', 'Successfully Created User!');
@@ -70,7 +73,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('user_profile',['edit_user'=>$user]);
+        return view('user_profile', ['edit_user' => $user]);
     }
 
     /**
@@ -82,7 +85,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users/user_update',['edit_user'=>$user]);
+        return view('users/user_update', ['edit_user' => $user]);
     }
 
     /**
@@ -94,10 +97,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
+
         // Validate the data submitted by user
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:225|'. Rule::unique('users'),
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'integer',
         ]);
 
         // if fails redirects back with errors
@@ -106,11 +112,11 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        $user = User::findOrFail($id);
         // Fill user model
         $user->fill([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role,
             'password' => Hash::make($request['password']),
         ]);
 
