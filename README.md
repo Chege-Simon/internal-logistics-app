@@ -12,8 +12,9 @@ If using xampp place the project in the xampp folder
 </p>
 
 <h2>Set Up</h2>
-<p>git clone "https://github.com"</p> 
+<p>git clone "https://github.com/Chege-Simon/internal-logistics-app.git</p> 
 <small>/****/clone project from github</small>
+
 <p>cd into project directory</p>
 <p>copy the env.example and paste as env.</p>
 <p>Change (if needed):</p>
@@ -41,14 +42,17 @@ If using xampp place the project in the xampp folder
 <p>##use access token as bearer token to access the data endpoints</p>
 
 <h4>Data End points  <strong>#dates are mandatory</strong></h4>
-
 <p>GET: localhost:8000/api/trip_logs/2023-01-13/2023-09-02 </p>  
 <small>/****/triplogs/{from date}/{to date}</small>
+
 <p>GET: localhost:8000/api/trips/2023-01-13/2023-09-02 </p>  
 <small>/****/trips/{from date}/{to date}</small>
+
 <p>GET: localhost:8000/api/bags/2023-01-13/2023-09-02 </p>  
 <small>/****/bags/{from date}/{to date}</small>
+
 <p>GET: localhost:8000/api/items/2023-01-13/2023-09-02 </p>  
 <small>/****/items/{from date}/{to date}</small>
+
 <p>GET: localhost:8000/api/users/2023-01-13/2023-09-02 </p>  
 <small>/****/users/{from date}/{to date}</small>
