@@ -17,13 +17,16 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+# give permissions to this file
+RUN chown -R www-data:www-data /var/www/html
+
 # Change Node Environment to development
 RUN NODE_ENV=development
 
 # Install NPM dependencies
-# RUN yarn install
+RUN npm install
 
 # Build Vite assets
-RUN yarn install --ignore-engines --ignore-platform
+RUN npm run build
 
 CMD ["/start.sh"]
