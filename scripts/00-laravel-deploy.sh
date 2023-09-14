@@ -6,6 +6,10 @@ composer install --no-dev --working-dir=/var/www/html
 echo "generating application key..."
 php artisan key:generate --show
 
+echo "Running npm"
+npm install 
+npm run build 
+
 echo "Caching config..."
 php artisan config:cache
 
@@ -17,7 +21,3 @@ php artisan migrate --force
 
 echo "Seeding Databases..."
 php artisan db:seed --force
-
-echo "Running yarn"
-yarn install --ignore-engines --ignore-platform
-# yarn run build 
