@@ -16,7 +16,7 @@ echo "Running migrations..."
 php artisan migrate --force
 
 echo "Seeding Databases..."
-php artisan db:seed
+php artisan db:seed --force
 
 echo "Running yarn"
 yarn install --ignore-engines --ignore-platform
