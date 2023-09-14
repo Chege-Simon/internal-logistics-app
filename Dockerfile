@@ -21,9 +21,9 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN NODE_ENV=development
 
 # Install NPM dependencies
-RUN npm install
+RUN yarn install
 
 # Build Vite assets
-RUN npm run build
+RUN yarn install --ignore-engines --ignore-platform
 
 CMD ["/start.sh"]
