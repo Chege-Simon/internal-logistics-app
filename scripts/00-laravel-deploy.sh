@@ -6,11 +6,11 @@ composer install --no-dev --working-dir=/var/www/html
 echo "generating application key..."
 php artisan key:generate --show
 
-# echo "Running version..."
-# npm -v
-# echo "Running npm..."
-# npm install 
-# npm run build 
+echo "Running version..."
+npm -v
+echo "Running npm..."
+npm install 
+npm run build 
 
 echo "Caching config..."
 php artisan config:cache

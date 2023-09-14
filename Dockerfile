@@ -18,20 +18,20 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 
-# Install Node.js and NPM
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs
+# # Install Node.js and NPM
+# RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+# RUN apt-get install -y nodejs
 
-# give permissions to this file
-RUN chown -R www-data:www-data /var/www/html
+# # give permissions to this file
+# RUN chown -R www-data:www-data /var/www/html
 
-# Change Node Environment to development
-RUN NODE_ENV=development
+# # Change Node Environment to development
+# RUN NODE_ENV=development
 
-# Install NPM dependencies
-RUN npm install
+# # Install NPM dependencies
+# RUN npm install
 
-# Build Vite assets
-RUN npm run build
+# # Build Vite assets
+# RUN npm run build
 
 CMD ["/start.sh"]
