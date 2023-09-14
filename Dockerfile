@@ -17,6 +17,11 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+
+# Install Node.js and NPM
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
 # give permissions to this file
 RUN chown -R www-data:www-data /var/www/html
 
