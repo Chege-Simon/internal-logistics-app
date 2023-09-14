@@ -18,6 +18,6 @@ php artisan migrate --force
 echo "Seeding Databases..."
 php artisan db:seed
 
-echo "Running npm"
-npm install
-npm run build 
+echo "Running yarn"
+yarn install --ignore-engines --ignore-platform
+# yarn run build 
