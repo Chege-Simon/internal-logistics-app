@@ -17,6 +17,8 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+# Change Node Environment to development
+RUN NODE_ENV=development
 
 # Install NPM dependencies
 RUN npm install
