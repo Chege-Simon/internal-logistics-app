@@ -28,10 +28,14 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 # # Change Node Environment to development
 # RUN NODE_ENV=development
 
-# # Install NPM dependencies
-# RUN npm install
+# Install NPM dependencies
 
-# # Build Vite assets
-# RUN npm run build
+
+COPY package.json package-lock.json
+
+RUN npm install
+
+# Build Vite assets
+RUN npm run build
 
 CMD ["/start.sh"]
