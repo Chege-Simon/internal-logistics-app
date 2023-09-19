@@ -2,6 +2,8 @@ FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
 
+RUN apk update
+
 # Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
@@ -18,21 +20,10 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 
-# # Install Node.js and NPM
-# RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-# RUN apt-get install -y nodejs
-
-# # give permissions to this file
-# RUN chown -R www-data:www-data /var/www/html
-
-# # Change Node Environment to development
-# RUN NODE_ENV=development
+# Install the `npm` package
+RUN apk add --no-cache npm
 
 # Install NPM dependencies
-
-
-COPY package.json package-lock.json
-
 RUN npm install
 
 # Build Vite assets
