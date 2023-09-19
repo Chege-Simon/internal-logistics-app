@@ -13,11 +13,11 @@
                 <div class="card-body">
 
                     @if($errors)
-                    @foreach($errors->all() as $error)
-                    <div class="alert alert-danger" role="alert">
-                        {{ $error }}
-                    </div>
-                    @endforeach
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">
+                                {{ $error }}
+                            </div>
+                        @endforeach
                     @endif
                     <!-- will be used to show any messages -->
                     @if (Session::has('message'))
@@ -37,7 +37,9 @@
                             <tr>
                                 <td>{{ $value->user->name}}</td>
                                 <td>{{ $value->bag_label }}</td>
+                                @if(count($value->trip->trip_logs) > 0)
                                 <td>{{ $value->trip->trip_logs->last()->status }}</td>
+                                @endif
 
                                 <!-- we will also add show, edit, and delete buttons -->
                                 <td>
